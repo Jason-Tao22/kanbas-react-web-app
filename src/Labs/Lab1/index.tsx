@@ -3,8 +3,44 @@ export default function Lab1() {
     <div id="wd-lab1">
       <h2>Lab 1</h2>
       <h3>HTML Examples</h3>
-      <div id="wd-h-tag"> ... </div>
-      <div id="wd-p-tag"> ... </div>
+      <div id="wd-h-tag">
+        <h4>Heading Tags</h4>
+        Text documents are often broken up into several sections and
+        subsections. Each section is usually prefaced with a short title or
+        heading that attempts to summarize the topic of the section it precedes.
+        For instance this paragraph is preceded by the heading Heading Tags. The
+        font of the section headings are usually larger and bolder than their
+        subsection headings. This document uses headings to introduce topics
+        such as HTML Documents, HTML Tags, Heading Tags, etc. HTML heading tags
+        can be used to format plain text so that it renders in a browser as
+        large headings. There are 6 heading tags for different sizes: h1, h2,
+        h3, h4, h5, and h6. Tag h1 is the largest heading and h6 is the smallest
+        heading.
+      </div>
+      <div id="wd-p-tag">
+        <h4>Paragraph Tag</h4>
+        <p id="wd-p-1">
+          This is a paragraph. We often separate a long set of sentences with
+          vertical spaces to make the text easier to read. Browsers ignore
+          vertical white spaces and render all the text as one single set of
+          sentences. To force the browser to add vertical spacing, wrap the
+          paragraphs you want to separate with the paragraph tag
+        </p>
+        <p id="wd-p-2">
+          This is the first paragraph. The paragraph tag is used to format
+          vertical gaps between long pieces of text like this one.
+        </p>
+        <p id="wd-p-3">
+          This is the second paragraph. Even though there is a deliberate white
+          gap between the paragraph above and this paragraph, by default
+          browsers render them as one contiguous piece of text as shown here on
+          the right.
+        </p>
+        <p id="wd-p-4">
+          This is the third paragraph. Wrap each paragraph with the paragraph
+          tag to tell browsers to render the gaps.
+        </p>
+      </div>
       <div id="wd-lists">
         <h4>List Tags</h4>
         <h5>Ordered List Tag</h5>
@@ -146,7 +182,6 @@ export default function Lab1() {
         Loading a local image:
         <br />
         <img id="wd-teslabot" src="images\teslabot.jpg" height="200px" />
-        <input type="text" placeholder="hint" title="tooltip" value="COMEDY" />
         <div id="wd-forms">
           <h4>Form Elements</h4>
           <form id="wd-text-fields">
@@ -204,6 +239,15 @@ export default function Lab1() {
           </form>
         </div>
       </div>
+      <button
+        id="wd-all-good"
+        onClick={() => alert("Life is Good!")}
+        type="button"
+      >
+        Hello World!
+      </button>
+      <h5>File upload</h5>
+      <input id="wd-upload" type="file" />
       <h5 id="wd-radio-buttons">Radio buttons</h5>
       <label>Favorite movie genre:</label>
       <br />
@@ -218,18 +262,6 @@ export default function Lab1() {
       <br />
       <input type="radio" name="radio-genre" id="wd-radio-fantasy" />
       <label htmlFor="wd-radio-fantasy">Fantasy</label>
-      <h5 id="wd-buttons">Buttons</h5>
-      <button
-        id="wd-all-good"
-        onClick={() => alert("Life is Good!")}
-        type="button"
-      >
-        Hello World!
-      </button>
-      <h5>File upload</h5>
-      <input type="checkbox" name="NAME2" value="OPTION1" checked />
-      <input type="checkbox" name="NAME2" value="OPTION2" />
-      <input type="checkbox" name="NAME2" value="OPTION3" checked />
       <h5 id="wd-checkboxes">Checkboxes</h5>
       <label>Favorite movie genre:</label>
       <br />
@@ -244,34 +276,7 @@ export default function Lab1() {
       <br />
       <input type="checkbox" name="check-genre" id="wd-chkbox-fantasy" />
       <label htmlFor="wd-chkbox-fantasy">Fantasy</label>
-      <select>
-        <option value="VAL1">Value 1</option>
-        <option value="VAL2" selected>
-          Value 2
-        </option>
-        <option value="VAL3">Value 3</option>
-      </select>
-      <select multiple>
-        <option value="VAL1" selected>
-          Value 1
-        </option>
-        <option value="VAL2">Value 2</option>
-        <option value="VAL3" selected>
-          Value 3
-        </option>
-      </select>
       <h4 id="wd-dropdowns">Dropdowns</h4>
-      <h5>Select one</h5>
-      <label htmlFor="wd-select-one-genre"> Favorite movie genre: </label>
-      <br />
-      <select id="wd-select-one-genre">
-        <option value="COMEDY">Comedy</option>
-        <option value="DRAMA">Drama</option>
-        <option selected value="SCIFI">
-          Science Fiction
-        </option>
-        <option value="FANTASY">Fantasy</option>
-      </select>
       <h5>Select many</h5>
       <label htmlFor="wd-select-many-genre"> Favorite movie genres: </label>
       <br />
@@ -320,6 +325,15 @@ export default function Lab1() {
         click here
       </a>
       to get dummy text
+      <p></p>
+      Please
+      <a
+        id="wd-github"
+        href="https://github.com/Jason-Tao22/kanbas-react-web-app.git"
+      >
+        click here
+      </a>
+      to get github project
       <br />
     </div>
   );

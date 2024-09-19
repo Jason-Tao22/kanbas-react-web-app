@@ -2,7 +2,6 @@ export default function AssignmentEditor() {
   return (
     <div id="wd-assignments-editor" style={{ width: "50%", margin: "0 auto" }}>
       {/* Assignment Name */}
-      {/* Assignment Name */}
       <label
         style={{ fontWeight: "bold", marginTop: "30px" }}
         htmlFor="wd-name"
@@ -21,6 +20,12 @@ export default function AssignmentEditor() {
       />
 
       {/* Description */}
+      <label
+        style={{ fontWeight: "bold", marginTop: "30px" }}
+        htmlFor="wd-description"
+      >
+        Description
+      </label>
       <textarea
         id="wd-description"
         style={{ width: "400px", height: "150px", marginBottom: "15px" }}
@@ -53,11 +58,11 @@ export default function AssignmentEditor() {
           </tr>
           <tr>
             <td align="right" valign="top" style={{ paddingRight: "10px" }}>
-              <label htmlFor="wd-assignment-group">Assignment Group</label>
+              <label htmlFor="wd-group">Assignment Group</label>
             </td>
             <td>
               <select
-                id="wd-assignment-group"
+                id="wd-group"
                 style={{
                   width: "150px",
                   marginBottom: "15px",
@@ -69,11 +74,11 @@ export default function AssignmentEditor() {
           </tr>
           <tr>
             <td align="right" valign="top" style={{ paddingRight: "10px" }}>
-              <label htmlFor="wd-display-grade">Display Grade as</label>
+              <label htmlFor="wd-display-grade-as">Display Grade as</label>
             </td>
             <td>
               <select
-                id="wd-display-grade"
+                id="wd-display-grade-as"
                 style={{
                   width: "100px",
                   marginBottom: "15px",
@@ -101,24 +106,26 @@ export default function AssignmentEditor() {
               <div>
                 Online Entry Options
                 <br />
-                <label>
-                  <input type="checkbox" /> Text Entry
+                <label htmlFor="wd-text-entry">
+                  <input id="wd-text-entry" type="checkbox" /> Text Entry
                 </label>
                 <br />
-                <label>
-                  <input type="checkbox" /> Website URL
+                <label htmlFor="wd-website-url">
+                  <input id="wd-website-url" type="checkbox" /> Website URL
                 </label>
                 <br />
-                <label>
-                  <input type="checkbox" /> Media Recordings
+                <label htmlFor="wd-media-recordings">
+                  <input id="wd-media-recordings" type="checkbox" /> Media
+                  Recordings
                 </label>
                 <br />
-                <label>
-                  <input type="checkbox" /> Student Annotation
+                <label htmlFor="wd-student-annotation">
+                  <input id="wd-student-annotation" type="checkbox" /> Student
+                  Annotation
                 </label>
                 <br />
-                <label>
-                  <input type="checkbox" /> File Uploads
+                <label htmlFor="wd-file-upload">
+                  <input id="wd-file-upload" type="checkbox" /> File Uploads
                 </label>
               </div>
             </td>
@@ -203,7 +210,7 @@ export default function AssignmentEditor() {
 
             <div style={{ width: "48%" }}>
               <label
-                htmlFor="wd-until"
+                htmlFor="wd-available-until"
                 style={{ display: "block", marginBottom: "5px" }}
               >
                 Until

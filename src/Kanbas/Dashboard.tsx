@@ -2,122 +2,200 @@ import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   return (
-    <div id="wd-dashboard">
+    <div id="wd-dashboard" style={{ paddingLeft: "0", paddingRight: "0" }}>
       <h1 id="wd-dashboard-title">Dashboard</h1>
       <hr />
       <h2 id="wd-dashboard-published">Published Courses (7)</h2>
       <hr />
-      <div id="wd-dashboard-courses">
-        <div className="wd-dashboard-course">
-          <Link
-            className="wd-dashboard-course-link"
-            to="/Kanbas/Courses/1234/Home"
+      <div
+        className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+        style={{ marginLeft: "0", marginRight: "0" }}
+      >
+        {/* Course 1 */}
+        <div className="col" style={{ width: "270px", marginBottom: "30px" }}>
+          <div
+            className="card rounded-3 overflow-hidden"
+            style={{ height: "100%" }}
           >
-            <img src="/images/reactjs.jpg" width={200} />
-            <div>
-              <h5>CS1234 React JS</h5>
-              <p className="wd-dashboard-course-title">
-                Full Stack Software Developer
-              </p>
-              <button> Go </button>
-            </div>
-          </Link>
+            <Link
+              className="text-decoration-none text-dark"
+              to="/Kanbas/Courses/101/Home"
+            >
+              <img
+                src="/images/reactjs.jpg"
+                width="100%"
+                height="160"
+                alt="React JS"
+              />
+              <div className="card-body">
+                <h5 className="card-title">
+                  CS101 Introduction to Programming
+                </h5>
+                <p className="card-text">Learn the basics of programming</p>
+                <button className="btn btn-primary">Go</button>
+              </div>
+            </Link>
+          </div>
         </div>
 
-        <div className="wd-dashboard-course">
-          <Link
-            className="wd-dashboard-course-link"
-            to="/Kanbas/Courses/2345/Home"
+        {/* Course 2 */}
+        <div className="col" style={{ width: "270px", marginBottom: "30px" }}>
+          <div
+            className="card rounded-3 overflow-hidden"
+            style={{ height: "100%" }}
           >
-            <img src="/images/reactjs.jpg" width={200} />
-            <div>
-              <h5>CS2345 Node JS</h5>
-              <p className="wd-dashboard-course-title">
-                Backend Development with Node.js
-              </p>
-              <button> Go </button>
-            </div>
-          </Link>
+            <Link
+              className="text-decoration-none text-dark"
+              to="/Kanbas/Courses/102/Home"
+            >
+              <img
+                src="/images/reactjs.jpg"
+                width="100%"
+                height="160"
+                alt="Web Development"
+              />
+              <div className="card-body">
+                <h5 className="card-title">CS102 Web Development</h5>
+                <p className="card-text">
+                  Building websites and web applications
+                </p>
+                <button className="btn btn-primary">Go</button>
+              </div>
+            </Link>
+          </div>
         </div>
 
-        <div className="wd-dashboard-course">
-          <Link
-            className="wd-dashboard-course-link"
-            to="/Kanbas/Courses/3456/Home"
+        {/* Course 3 */}
+        <div className="col" style={{ width: "270px", marginBottom: "30px" }}>
+          <div
+            className="card rounded-3 overflow-hidden"
+            style={{ height: "100%" }}
           >
-            <img src="/images/reactjs.jpg" width={200} />
-            <div>
-              <h5>CS3456 Angular</h5>
-              <p className="wd-dashboard-course-title">
-                Frontend Framework with Angular
-              </p>
-              <button> Go </button>
-            </div>
-          </Link>
+            <Link
+              className="text-decoration-none text-dark"
+              to="/Kanbas/Courses/103/Home"
+            >
+              <img
+                src="/images/reactjs.jpg"
+                width="100%"
+                height="160"
+                alt="Algorithms"
+              />
+              <div className="card-body">
+                <h5 className="card-title">CS103 Algorithms</h5>
+                <p className="card-text">
+                  Understanding data structures and algorithms
+                </p>
+                <button className="btn btn-primary">Go</button>
+              </div>
+            </Link>
+          </div>
         </div>
 
-        <div className="wd-dashboard-course">
-          <Link
-            className="wd-dashboard-course-link"
-            to="/Kanbas/Courses/4567/Home"
+        {/* Course 4 */}
+        <div className="col" style={{ width: "270px", marginBottom: "30px" }}>
+          <div
+            className="card rounded-3 overflow-hidden"
+            style={{ height: "100%" }}
           >
-            <img src="/images/reactjs.jpg" width={200} />
-            <div>
-              <h5>CS4567 Vue.js</h5>
-              <p className="wd-dashboard-course-title">
-                Progressive Framework Vue.js
-              </p>
-              <button> Go </button>
-            </div>
-          </Link>
+            <Link
+              className="text-decoration-none text-dark"
+              to="/Kanbas/Courses/104/Home"
+            >
+              <img
+                src="/images/reactjs.jpg"
+                width="100%"
+                height="160"
+                alt="Databases"
+              />
+              <div className="card-body">
+                <h5 className="card-title">CS104 Databases</h5>
+                <p className="card-text">Designing and managing databases</p>
+                <button className="btn btn-primary">Go</button>
+              </div>
+            </Link>
+          </div>
         </div>
 
-        <div className="wd-dashboard-course">
-          <Link
-            className="wd-dashboard-course-link"
-            to="/Kanbas/Courses/5678/Home"
+        {/* Course 5 */}
+        <div className="col" style={{ width: "270px", marginBottom: "30px" }}>
+          <div
+            className="card rounded-3 overflow-hidden"
+            style={{ height: "100%" }}
           >
-            <img src="/images/reactjs.jpg" width={200} />
-            <div>
-              <h5>CS5678 Python Programming</h5>
-              <p className="wd-dashboard-course-title">
-                Python for Software Engineers
-              </p>
-              <button> Go </button>
-            </div>
-          </Link>
+            <Link
+              className="text-decoration-none text-dark"
+              to="/Kanbas/Courses/105/Home"
+            >
+              <img
+                src="/images/reactjs.jpg"
+                width="100%"
+                height="160"
+                alt="Machine Learning"
+              />
+              <div className="card-body">
+                <h5 className="card-title">CS105 Machine Learning</h5>
+                <p className="card-text">
+                  Introduction to machine learning algorithms
+                </p>
+                <button className="btn btn-primary">Go</button>
+              </div>
+            </Link>
+          </div>
         </div>
 
-        <div className="wd-dashboard-course">
-          <Link
-            className="wd-dashboard-course-link"
-            to="/Kanbas/Courses/6789/Home"
+        {/* Course 6 */}
+        <div className="col" style={{ width: "270px", marginBottom: "30px" }}>
+          <div
+            className="card rounded-3 overflow-hidden"
+            style={{ height: "100%" }}
           >
-            <img src="/images/reactjs.jpg" width={200} />
-            <div>
-              <h5>CS6789 Java Development</h5>
-              <p className="wd-dashboard-course-title">
-                Advanced Java Programming
-              </p>
-              <button> Go </button>
-            </div>
-          </Link>
+            <Link
+              className="text-decoration-none text-dark"
+              to="/Kanbas/Courses/106/Home"
+            >
+              <img
+                src="/images/reactjs.jpg"
+                width="100%"
+                height="160"
+                alt="Cloud Computing"
+              />
+              <div className="card-body">
+                <h5 className="card-title">CS106 Cloud Computing</h5>
+                <p className="card-text">
+                  Basics of cloud infrastructure and services
+                </p>
+                <button className="btn btn-primary">Go</button>
+              </div>
+            </Link>
+          </div>
         </div>
 
-        <div className="wd-dashboard-course">
-          <Link
-            className="wd-dashboard-course-link"
-            to="/Kanbas/Courses/7890/Home"
+        {/* Course 7 */}
+        <div className="col" style={{ width: "270px", marginBottom: "30px" }}>
+          <div
+            className="card rounded-3 overflow-hidden"
+            style={{ height: "100%" }}
           >
-            <img src="/images/reactjs.jpg" width={200} />
-            <div>
-              <h5>CS7890 Ruby on Rails</h5>
-              <p className="wd-dashboard-course-title">
-                Web Development with Ruby on Rails
-              </p>
-              <button> Go </button>
-            </div>
-          </Link>
+            <Link
+              className="text-decoration-none text-dark"
+              to="/Kanbas/Courses/107/Home"
+            >
+              <img
+                src="/images/reactjs.jpg"
+                width="100%"
+                height="160"
+                alt="Cybersecurity"
+              />
+              <div className="card-body">
+                <h5 className="card-title">CS107 Cybersecurity</h5>
+                <p className="card-text">
+                  Foundations of cybersecurity and protection
+                </p>
+                <button className="btn btn-primary">Go</button>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

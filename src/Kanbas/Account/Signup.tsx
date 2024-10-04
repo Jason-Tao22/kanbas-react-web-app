@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-export default function Signin() {
+export default function Signup() {
   return (
-    <div id="wd-signin-screen">
-      <h1>Sign in</h1>
+    <div id="wd-signup-screen">
+      <h1>Sign up</h1>
       <input
         id="wd-username"
         placeholder="username"
@@ -16,16 +16,23 @@ export default function Signin() {
         className="form-control mb-2"
       />
       <br />
+      <input
+        id="wd-password"
+        placeholder="verify password"
+        type="password"
+        className="form-control mb-2"
+      />
+      <br />
       <Link
         id="wd-signin-btn"
         to="/Kanbas/Account/Profile"
         className="btn btn-primary w-100"
       >
-        Sign in
+        Sign up{" "}
       </Link>
       <br />
-      <Link id="wd-signup-link" to="/Kanbas/Account/Signup">
-        Sign up
+      <Link id="wd-signin-link" to="/Kanbas/Account/Signin">
+        Sign in
       </Link>
     </div>
   );

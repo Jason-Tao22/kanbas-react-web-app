@@ -1,0 +1,208 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { enroll, unenroll, toggleAllCourses } from "./reducer";
+import * as client from "../Courses/Enrollments/client";
+
+export default function Dashboard({
+  courses,
+  course,
+  setCourse,
+  addNewCourse,
+  deleteCourse,
+  updateCourse,
+}: {
+  courses: any[];
+  course: any;
+  setCourse: (course: any) => void;
+  addNewCourse: () => void;
+  deleteCourse: (course: any) => void;
+  updateCourse: () => void;
+}) {
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const { enrollments, showAllCourses } = useSelector(
+    (state: any) => state.enrollmentReducer
+  );
+
+  const toggleEnrollments = () => {
+    dispatch(toggleAllCourses());
+  };
+
+  const isEnrolled = (courseId: string) =>
+    enrollments.some(
+      (enrollment: { user: string; course: string }) =>
+        enrollment.user === currentUser._id && enrollment.course === courseId
+    );
+
+  const filteredCourses = showAllCourses
+    ? courses
+    : courses.filter((course) => isEnrolled(course._id));
+
+  const handleEnroll = async (courseId: string) => {
+    try {
+      await client.enrollInCourse(courseId);
+      dispatch(enroll({ userId: currentUser._id, courseId }));
+    } catch (error) {
+      console.error("Failed to enroll:", error);
+    }
+  };
+
+  const handleUnenroll = async (courseId: string) => {
+    try {
+      await client.unenrollFromCourse(courseId);
+      dispatch(unenroll({ userId: currentUser._id, courseId }));
+    } catch (error) {
+      console.error("Failed to unenroll:", error);
+    }
+  };
+
+  return (
+    <div className="p-4" id="wd-dashboard">
+      <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
+      {currentUser.role === "FACULTY" && (
+        <>
+          <h5>
+            New Course
+            <button
+              className="btn btn-primary float-end"
+              id="wd-add-new-course-click"
+              onClick={addNewCourse}
+            >
+              Add
+            </button>
+            <button
+              className="btn btn-warning float-end me-2"
+              onClick={updateCourse}
+              id="wd-update-course-click"
+            >
+              Update
+            </button>
+          </h5>
+          <br />
+          <input
+            defaultValue={course.name}
+            className="form-control mb-2"
+            onChange={(e) => setCourse({ ...course, name: e.target.value })}
+          />
+          <textarea
+            defaultValue={course.description}
+            className="form-control"
+            onChange={(e) =>
+              setCourse({ ...course, description: e.target.value })
+            }
+          />
+          <hr />
+        </>
+      )}
+      {currentUser.role === "STUDENT" && (
+        <button
+          className="btn btn-primary float-end mb-3"
+          onClick={toggleEnrollments}
+        >
+          {showAllCourses ? "My Enrollments" : "All Courses"}
+        </button>
+      )}
+      <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2>
+      <hr />
+      <div id="wd-dashboard-courses" className="row">
+        <div className="row row-cols-1 row-cols-md-5 g-4">
+          {filteredCourses.map((course) => (
+            <div key={course._id} className="col" style={{ width: "300px" }}>
+              <Link
+                to={
+                  isEnrolled(course._id)
+                    ? `/Kanbas/Courses/${course._id}/Home`
+                    : "#"
+                }
+                className="text-decoration-none"
+              >
+                <div className="card rounded-3 overflow-hidden">
+                  <img
+                    src={
+                      course.image && course.image !== ""
+                        ? course.image
+                        : `${process.env.PUBLIC_URL}/images/${course._id}.png`
+                    }
+                    height={160}
+                    className="card-img-top"
+                    alt={course.name}
+                    onError={(e) => {
+                      e.currentTarget.src = `${process.env.PUBLIC_URL}/images/default-course.png`;
+                    }}
+                  />
+                  <div className="card-body">
+                    <span
+                      className="wd-dashboard-course-link"
+                      style={{
+                        textDecoration: "none",
+                        color: "navy",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {course.name}
+                    </span>
+                    <p
+                      className="wd-dashboard-course-title card-text"
+                      style={{ maxHeight: 53, overflow: "hidden" }}
+                    >
+                      {course.description}
+                    </p>
+                    {currentUser.role === "STUDENT" &&
+                      (isEnrolled(course._id) ? (
+                        <button
+                          onClick={(event) => {
+                            event.preventDefault();
+                            handleUnenroll(course._id);
+                          }}
+                          className="btn btn-danger float-end"
+                          id="wd-unenroll-course-click"
+                        >
+                          Unenroll
+                        </button>
+                      ) : (
+                        <button
+                          onClick={(event) => {
+                            event.preventDefault();
+                            handleEnroll(course._id);
+                          }}
+                          className="btn btn-success float-end"
+                          id="wd-enroll-course-click"
+                        >
+                          Enroll
+                        </button>
+                      ))}
+                    {currentUser.role === "FACULTY" && (
+                      <>
+                        <button
+                          onClick={(event) => {
+                            event.preventDefault();
+                            deleteCourse(course._id);
+                          }}
+                          className="btn btn-danger float-end"
+                          id="wd-delete-course-click"
+                        >
+                          Delete
+                        </button>
+                        <button
+                          id="wd-edit-course-click"
+                          onClick={(event) => {
+                            event.preventDefault();
+                            setCourse(course);
+                          }}
+                          className="btn btn-warning me-2 float-end"
+                        >
+                          Edit
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

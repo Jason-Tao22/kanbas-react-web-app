@@ -1,32 +1,47 @@
 import CoursesNavigation from "./Navigation";
 import Modules from "./Modules";
-import { Navigate, Route, Routes } from "react-router";
 import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
-export default function Courses() {
+
+//import { courses } from "../Database";
+import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
+import { FaAlignJustify } from "react-icons/fa6";
+import PeopleTable from "./People/Table";
+
+export default function Courses({ courses }: { courses: any[] }) {
+  const { cid } = useParams();
+  const course = courses.find((course) => course._id === cid);
+  const { pathname } = useLocation();
+
   return (
     <div id="wd-courses">
-      <h2>Course 1234</h2>
+      <h2 className="text-danger">
+        <FaAlignJustify className="me-4 fs-4 mb-1" />
+        {course && course.name} &gt; {pathname.split("/")[4]}
+      </h2>
       <hr />
-      <table>
-        <tr>
-          <td valign="top">
-            <CoursesNavigation />
-          </td>
-          <td valign="top">
-            <Routes>
-              <Route path="/" element={<Navigate to="Home" />} />
-              <Route path="Home" element={<Home />} />
-              <Route path="Modules" element={<Modules />} />
-              <Route path="Assignments" element={<Assignments />} />
+      <div className="d-flex">
+        <div className="d-none d-md-block">
+          <CoursesNavigation />
+        </div>
 
-              <Route path="Assignments/:aid" element={<AssignmentEditor />} />
-              <Route path="People" element={<h2>People</h2>} />
-            </Routes>
-          </td>
-        </tr>
-      </table>
+        <div className="flex-fill">
+          <Routes>
+            <Route path="/" element={<Navigate to="Home" />} />
+            <Route path="Home" element={<Home />} />
+            <Route path="Modules" element={<Modules />} />
+            <Route path="Assignments" element={<Assignments />} />
+            <Route path="Assignments/:aid" element={<AssignmentEditor />} />
+            <Route path="People" element={<PeopleTable />} />
+
+            <Route
+              path="/Kanbas/Courses/:cid/People"
+              element={<PeopleTable />}
+            />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
